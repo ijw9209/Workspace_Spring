@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="today" class="java.util.Date"></bean>
+	<bean id="birth" class="java.util.Date">
+		<constructor-arg name="year" value="119"></constructor-arg>
+		<constructor-arg name="month" value="11"></constructor-arg>
+		<constructor-arg name="date" value="25"></constructor-arg>
+	</bean>	
+	
+	<bean id="set" class="java.util.Date">
+		<property name="year" value="119"></property>
+		<property name="month" value="11"></property>
+		<property name="date" value="25"></property>
+	</bean>
+	
+		<!-- setter injection -->
+	<bean id="dto" class="com.test03.UserDto">
+		<constructor-arg value="홍길동"/>
+		<property name="mydate" ref="set"></property>
+	</bean>
+	
+	<bean id="woong" class="com.test03.UserDto" >
+		<constructor-arg value="이재웅"></constructor-arg>
+		<property name="mydate" ref="birth"></property>
+	</bean>
+	<bean id="service" class="com.test03.UserServiceImpl">
+	</bean>
+</beans>

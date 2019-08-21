@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 값안넣으면 기본생성사 호출 -->
+	<bean id="hong" class="com.test02.Address"></bean>
+	
+	<bean id="lee" class="com.test02.Address">
+		<constructor-arg value="이순신" name="name"></constructor-arg>
+		<constructor-arg value="경기도 고양시" name="addr"></constructor-arg>
+		<constructor-arg value="010-1234-5678" name="tel"></constructor-arg>
+	</bean>
+	
+	<bean id="kim" class="com.test02.Address">
+		<constructor-arg value="김선달" index="0"></constructor-arg>
+		<constructor-arg value="서울시 강남구" index="1"></constructor-arg>
+		<constructor-arg value="010-8767-5274" index="2"></constructor-arg>
+	</bean>
+	
+	<bean id="jHong" class="com.test02.JobAddress"></bean>
+	
+	<bean id="jlee" class="com.test02.JobAddress">
+		<constructor-arg name="addr"  ref="lee"/>
+		<constructor-arg name="jobName" value="기획자" />	
+	</bean>
+	<!-- ref 다른값 참조할수있다 -->
+	<bean id="jKim" class="com.test02.JobAddress">
+		<constructor-arg name="addr" ref="kim"/>
+		<constructor-arg name="jobName" value="디자이너"/>
+	</bean>
+</beans>
