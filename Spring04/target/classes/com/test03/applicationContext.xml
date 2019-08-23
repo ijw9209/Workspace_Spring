@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+	<bean id="favorite" name="favoriteFood" class="com.test03.Food">
+		<property name="name" value="회"></property>
+		<property name="price" value="300000"></property>
+	 </bean> 
+
+ 	<bean id="unFavorite" name="unFavoriteFood" class="com.test03.Food">
+		<constructor-arg value="해물탕"></constructor-arg>
+		<constructor-arg value="40000"></constructor-arg>
+	</bean>
+	
+	<!-- 
+	<bean id="myFood" class="com.test03.MyFoodMgr">
+		<property name="favoriteFood" ref="favorite"></property>
+		<property name="unFavoriteFood" ref="unFavorite"></property>
+	</bean> -->
+	<!-- autowire : -->
+	<bean id="myFood" class="com.test03.MyFoodMgr" autowire="default">
+	</bean>
+	
+	<!-- 
+	byName : 프로퍼티의 이름과 같은 이름을 갖는 빈 객체를 설정
+	byType : 프로퍼티의 타입과 같은 타입을 갖는 빈객체를 설정
+	constructor : 생성자 파라미터 타입과 같은 타입을 갖는 빈객체를 생성자에 전달
+	autodetect : constructor 방식을 먼저 적용하고, byType 방식을 적용하여 의존 객체를 설정
+	
+	autowire 속성값
+	1.byName : id/name으로 setter 자동 호출
+	(name=favoriteFood -> setFavoriteFood)
+	setter 와 같은 이름의 bean이 있으면 자동 할당
+	
+	2.byType : setter 의 parameter Type과 같은 type의 bean 이 있으면 자동할당
+	favoriteFood(Food favoriteFood) ->Food type의 bean을 자동 할당
+	
+	3.constructor : 생성자의 parameter와 같은 name의 bean을 자동할당
+	
+	4.default(autodetect) : 생성자에 할당할 type이 있는지 먼저확인후
+	(constructor) 없으면 메서드에서 type이 있는지 확인하여 할당(byType)
+	* 기본 생성자가 있으면 기본생성자 호출
+	
+	@Autowired라는 어노테이션으로 많이쓰인다
+	 -->
+</beans>
