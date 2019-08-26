@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- target (cc) -->
+	<bean id="targetBean" class="com.test07.MessageBeanImpl">
+		<property name="name" value="뽀로로"></property>
+	</bean>
+	
+	<!-- advice -->
+	<bean id="loggingAdvice" class="com.test07.LoggingAdvice"></bean>
+	
+	<!-- advisor(aspect) = advice + pointcut -->
+	<bean id="myAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="loggingAdvice"></property>
+		<property name="pointcut" >
+			<bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+				<!-- pattern 자바 정규식 regular expression -->
+				<property name="pattern">
+					<value>.*sayHello.*</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- proxy : 타겟인척 호출을 가로챔 인터셉터 -->
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="targetBean"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>myAdvisor</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

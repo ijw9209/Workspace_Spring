@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<aop:aspectj-autoproxy/>
+	
+	<bean id="person01" class="com.test01.Person"></bean>
+	<bean id="person02" class="com.test01.Person"></bean>
+	<bean id="myadvise" class="com.test01.MyAdvice"></bean>
+	
+	<!-- 
+- Before Advice : Joinpoint 앞에서 실행되는 Advice
+- Around Advice : Joinpoint 앞과 뒤에서 실행되는 Advice
+- After Advice : Joinpoint 호출이 리턴되기 직전에 실행되는 Advice
+- After Returning Advice : Joinpoint 메서드 호출이 정상적으로 종료된 후에 실행되는 Advice
+- After Throwing Advice : 예외가 발생했을때 실행되는 Advice
+
+-->
+	
+	<aop:config>
+		<aop:aspect ref="myadvise">
+			<aop:before method="beforeSaying" pointcut="execution(public * com.test01.Person.sayName(..))"/>
+			<aop:after method="afterSaying" pointcut="execution(public * com.test01.Person.sayJob(..))"/>
+			<aop:after-returning  method="afterReturnSaying" pointcut="execution(public * com.test01.Person.sayJob(..))"/>	
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
