@@ -17,4 +17,23 @@
 	<bean id="myUser02" class="com.test04.UserDto">
 		<property name="name" value="이순신"></property>
 	</bean>
+	
+	
+<!-- 
+1.<context:annotation-config/>
+@Autowire 등의 어노테이션을 처리해주는 bean poset processor
+(@Autowire , @Required , @Resource , @PostConstructor , @PreDestory)
+
+2.<context:component-scan base-package="???" />
+???안에있는 어노테이션을 처리.
+(@Component , @Controller , @Service , @Repository , ...)
+-> annotation-config를 확장
+
+3. <mvc:annotation-driven/>
+HandlerMapping 클래스와 HandlerAdapter 클래스를 사용하여
+요청된 uri를 mapping 및 유효성 검사를 도움
+(@RequestMapping , @Valid , ...)
+
+
+ -->	
 </beans>
