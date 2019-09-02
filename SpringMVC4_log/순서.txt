@@ -21,5 +21,7 @@ forceEncoding : 무엇일까
 14.pom.xml - org.apache.commons/commons-lang < filter 랑 상관은없음 스트링 util쓸라고가져옴
 15.com.hello.mvc03.common.filter/LogFilter.java (impl javax.servlet.Filter)
 16.web.xml 
-
-
+--------------------------(login)
+17.pom.xml - org.codehaus.jackson/jackson-core , jackson-mapper
+		   - (spring 4.x 이상) com.fasterxml.jackson/jackson-databind, jackson-core
+18.controller

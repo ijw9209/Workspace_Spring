@@ -82,6 +82,12 @@ public class HomeController {
 		
 		
 	}
+	@RequestMapping(value="/loginform.do" , method = RequestMethod.GET)
+	public String login() {
+		
+		
+		return "login";
+	}
 	
 	
 }
