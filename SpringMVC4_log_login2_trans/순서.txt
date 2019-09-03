@@ -26,3 +26,10 @@ forceEncoding : 무엇일까
 		   - (spring 4.x 이상) com.fasterxml.jackson/jackson-databind, jackson-core
 18.(index.jsp - > controller )login.jsp
 19.(ajax - > controller[@ResponseBody],  biz , dao , mapper.xml)
+--------------------------(transaction)
+20.dao.biz.controller
+21.applicationContext.xml (DataSourceTransactionManager - bean)
+22.servlet-context.xml (<tx:annotation-driven>)
+----------------------------(interceptor)
+23.com.hello.mvc03.common.interceptor / LoginInterceptor (Impl HandlerInterceptor)
+24.servlet-context.xml

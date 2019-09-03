@@ -11,6 +11,7 @@
 </head>
 <body>
 
+	<!-- form enctype="multipart/form-data" 을 꼭 적어줘야 함 안적으면 form 이 안감 -->
 
 	<!-- spring에서의 form tag에서는 input 값이나 password로 생성한 이 부분을 java object와 mapping 하도록 되어 있다. -->
 	<!-- 위 코드의 form tag에서 modelAttribute="user" 를 넣어주면,(여기에서 user는 앞서 지정한 addAttribute의 이름이다.) form tag에서 User.class에 있는 set method와 get method를 이용해서 각각의 속성들과 mapping을 자동으로 해준다. -->

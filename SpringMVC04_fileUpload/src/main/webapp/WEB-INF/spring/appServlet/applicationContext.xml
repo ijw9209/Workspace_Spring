@@ -4,7 +4,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
+	<!-- 
+	DispatcherServlet은 이름이 multipartResolver인 빈을 사용하기때문에 이름이틀려서는안됨
+	스프링 프레임워크의 내장 객체인 CommonsMultipartResolver 를 이용한 파일 업로드 방식
+		maxUploadSize : 한 번에 최대 올릴 수 있는 파일 사이즈 (기본값 -1)
+  		maxInMemorySize : 해당 경로에 최대로 저장할 수 있는 파일 사이즈(기본값 10240바이트)
+  		defaultEncoding : 요청을 파싱할때 사용할 캐릭터 인코딩(기본값 ISO-8859-1(UTF-8))
+ -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="100000000"/>
 		<property name="defaultEncoding" value="UTF-8"></property>

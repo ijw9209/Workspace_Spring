@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<!-- 자동으로 redirect 와같은 기능 -->
 	<c:redirect url="form" />
 
 </body>
