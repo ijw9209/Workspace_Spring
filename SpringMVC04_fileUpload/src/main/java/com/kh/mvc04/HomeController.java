@@ -67,7 +67,8 @@ public class HomeController {
 			inputStream = file.getInputStream();
 				//실제 경로를 가져옴
 			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/storage");
-		
+			//"C:\\Workspace_Spring\\SpringMVC04_fileUpload\\src\\main\\webapp\\mystorge";
+			// 상대경로로 webapp폴더에 mystorge 폴더를 만들어 업로드 위치를 바꿈			
 			System.out.println("업로드 될 실제 경로 : " + path);
 			
 			//파일 객체생성 (경로)
@@ -115,7 +116,22 @@ public class HomeController {
 		
 		String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/storage");
 		File file = new File(path + "/" + filename);
-	
+		
+		/*
+		  WebUtils.getRealPath(request.getSession().getServletContext()
+		  절대 경로를 찾아준다
+		  
+			절대경로 : c:\.. 이렇게 시작하는 경로
+			
+			
+			상대경로 : 내 폴더 위치 기준으로 찾기
+			/ : root(최상위)
+			./ : 현재폴더
+			../ : 바로위
+			../../ : 위에 위에 폴더
+
+		 */
+		
 		byte[] bytes = FileCopyUtils.copyToByteArray(file);
 		
 		// 한글은 http 헤더에 사용할 수 없기때문에 파일명은 영문으로 인코딩하여 헤더에 적용한다
@@ -125,6 +141,17 @@ public class HomeController {
 		// setContentLength 파일 사이즈 지정
 		response.setContentLength(bytes.length);
 		response.setContentType("image/jpeg");
+		
+		/* response.setContentType("image/jpeg");
+		  tomcat Servers프로젝트에 있는 web.xml 확인(mime-type)
+		mime(Multipurpose Internet Mail Extension) type : request header에 지정되는, 데이터가 어떤 종류의 stream인지를 나타내는 프로토콜 
+		 ex) hwp
+			   <mime-mapping>
+			      <extension>hwp</extension>
+			      <mime-type>application/unknown</mime-type>
+			   </mime-mapping>
+		*/
+		
 		
 		return bytes;
 		 /*
