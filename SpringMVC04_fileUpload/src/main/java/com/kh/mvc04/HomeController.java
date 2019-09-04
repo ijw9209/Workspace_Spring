@@ -68,7 +68,11 @@ public class HomeController {
 				//실제 경로를 가져옴
 			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/storage");
 			//"C:\\Workspace_Spring\\SpringMVC04_fileUpload\\src\\main\\webapp\\mystorge";
-			// 상대경로로 webapp폴더에 mystorge 폴더를 만들어 업로드 위치를 바꿈			
+			// 상대경로로 webapp폴더에 mystorge 폴더를 만들어 업로드 위치를 바꿈
+			// getRealPath : 서블릿 컨테이너에서 제공 한대로
+						//               웹 애플리케이션 내에서 지정된 경로의 실제 경로를 리턴 (절대경로)
+						// 절대경로 : c:\..\.. 같은 것
+						// 상대경로 : 현재 내 폴더 위치 기준으로 찾음 (/ : root , ./ : 현재, ../ : 상위)
 			System.out.println("업로드 될 실제 경로 : " + path);
 			
 			//파일 객체생성 (경로)
